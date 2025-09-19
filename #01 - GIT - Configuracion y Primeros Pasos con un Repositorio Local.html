@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git - Configuración y Primeros Pasos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e1e4e8;
+        }
+        
+        h1 {
+            color: #f14e32;
+            margin-bottom: 0.5rem;
+        }
+        
+        h2 {
+            color: #f14e32;
+            margin: 1.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        
+        h3 {
+            color: #0366d6;
+            margin: 1.2rem 0 0.8rem;
+        }
+        
+        .note {
+            background-color: #f6f8fa;
+            border-left: 4px solid #0366d6;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .note-title {
+            font-weight: bold;
+            color: #0366d6;
+            margin-bottom: 0.4rem;
+        }
+        
+        .command-block {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+        
+        .command {
+            color: #032f62;
+            font-weight: bold;
+        }
+        
+        .output {
+            color: #6a737d;
+            margin-top: 0.5rem;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #e1e4e8, transparent);
+            margin: 2rem 0;
+        }
+        
+        .hierarchy {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .level {
+            text-align: center;
+            padding: 1rem;
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            width: 30%;
+            min-width: 200px;
+            margin-bottom: 1rem;
+        }
+        
+        .level h4 {
+            color: #f14e32;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hierarchy {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .level {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e1e4e8;
+            color: #6a737d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Git - Configuración y Primeros Pasos</h1>
+        <p>Guía básica de configuración y uso inicial de Git</p>
+    </header>
+    
+    <section>
+        <h2>Entorno y Versión</h2>
+        
+        <div class="command-block">
+            <div class="command">Terminal: zsh | bash</div>
+            <div class="output">% bash --> bash-3.2$</div>
+        </div>
+        
+        <div class="command-block">
+            <div class="command">bash-3.2$ git --version</div>
+            <div class="output">git version 2.39.5 (Apple Git-154)</div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">NOTA</div>
+            <p>La versión de Git puede variar según el sistema operativo y la fecha de instalación.</p>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Niveles de Configuración de Git</h2>
+        
+        <p>Git aplica las configuraciones en este orden (la última que lee prevalece):</p>
+        
+        <div class="hierarchy">
+            <div class="level">
+                <h4>1. Sistema (--system)</h4>
+                <p>Afecta a todos los usuarios del sistema</p>
+            </div>
+            <div class="level">
+                <h4>2. Global (--global)</h4>
+                <p>Afecta solo al usuario actual</p>
+            </div>
+            <div class="level">
+                <h4>3. Local (--local)</h4>
+                <p>Afecta solo al repositorio actual</p>
+            </div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">PRECEDENCIA</div>
+            <p>Las configuraciones locales anulan las globales, que a su vez anulan las del sistema.</p>
+        </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <section>
+        <h2>Configuración Básica</h2>
+        
+        <h3>Configuración del nombre de usuario:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git config --global user.name "kmarzana"</div>
+        </div>
+        
+        <h3>Configuración del mail de usuario:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git config --global user.email "kmarzana@birt.eus"</div>
+        </div>
+        
+        <h3>Configuración del editor por defecto:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git config --global core.editor "code --wait"</div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">EDITOR</div>
+            <p>"code --wait" configura Visual Studio Code como editor. Asegúrate de tenerlo instalado y disponible en el PATH.</p>
+        </div>
+        
+        <h3>Configuración CRLF:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git config --global core.autocrlf true (Windows)</div>
+            <div class="command">bash-3.2$ git config --global core.autocrlf input (Mac)</div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">CRLF</div>
+            <p>Esta configuración ayuda a manejar correctamente los saltos de línea entre diferentes sistemas operativos.</p>
+        </div>
+        
+        <h3>Mostrar la configuración de Git:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git config --list</div>
+            <div class="output">
+                credential.helper=osxkeychain<br>
+                init.defaultbranch=main<br>
+                user.name=kmarzana<br>
+                user.email=kmarzana@birt.eus<br>
+                core.editor=code --wait<br>
+                core.autocrlf=input
+            </div>
+        </div>
+    </section>
+    
+    <div class="divider"></div>
+    
+    <section>
+        <h2>Primeros Pasos con un Repositorio Local</h2>
+        
+        <h3>Inicializar repositorio:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git init</div>
+            <div class="output">Initialized empty Git repository in /Users/kmarzana/Documents/GIT/DWES01/.git/</div>
+        </div>
+        
+        <h3>Estructura de carpetas:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ ls -la</div>
+            <div class="output">
+                drwxr-xr-x  4 kmarzana  staff   128 19 sep 00:14 .<br>
+                drwxr-xr-x@ 5 kmarzana  staff   160 18 sep 23:54 ..<br>
+                drwxr-xr-x@ 9 kmarzana  staff   288 19 sep 00:14 .git<br>
+                -rw-r--r--  1 kmarzana  staff  1317 19 sep 00:09 GIT - Configuración y Primeros Pasos con un Repositorio Local.txt
+            </div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">CARPETA .git</div>
+            <p>La carpeta .git contiene toda la información de control de versiones. No modifiques manualmente su contenido.</p>
+        </div>
+        
+        <h3>Verificar estado del repositorio:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git status</div>
+            <div class="output">
+                On branch main<br><br>
+                No commits yet<br><br>
+                Untracked files:<br>
+                (use "git add &lt;file&gt;..." to include in what will be committed)<br>
+                "GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt"<br><br>
+                nothing added to commit but untracked files present (use "git add" to track)
+            </div>
+        </div>
+        
+        <h3>Añadir archivos al Staging Area:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git add . (todos los archivos)</div>
+        </div>
+        
+        <div class="command-block">
+            <div class="command">bash-3.2$ git status</div>
+            <div class="output">
+                On branch main<br><br>
+                No commits yet<br><br>
+                Changes to be committed:<br>
+                (use "git rm --cached &lt;file&gt;..." to unstage)<br>
+                new file:   "GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt"
+            </div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">STAGING AREA</div>
+            <p>El staging area (área de preparación) es donde se colocan los cambios que se incluirán en el próximo commit.</p>
+        </div>
+        
+        <h3>Realizar primer commit:</h3>
+        <div class="command-block">
+            <div class="command">bash-3.2$ git commit -m "Commit inicial"</div>
+            <div class="output">
+                [main (root-commit) ff54b75] Commit inicial<br>
+                1 file changed, 72 insertions(+)<br>
+                create mode 100644 "GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt"
+            </div>
+        </div>
+        
+        <div class="note">
+            <div class="note-title">MENSAJES DE COMMIT</div>
+            <p>Los mensajes de commit deben ser descriptivos y concisos. Es una buena práctica usar el imperativo ("Añadir" en lugar de "Añadido").</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>Documentación de Git - Configuración y primeros pasos</p>
+    </footer>
+</body>
+</html>

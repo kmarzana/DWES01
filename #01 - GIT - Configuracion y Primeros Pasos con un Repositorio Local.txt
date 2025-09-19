@@ -1,0 +1,85 @@
+* Terminal: zsh | bash
+        % bash --> bash-3.2$
+
+* Versión de Git:
+        bash-3.2$ git --version
+        **
+        git version 2.39.5 (Apple Git-154)
+
+* Niveles de configuración de Git: --system | --global | --local
+        Git aplica las configuraciones en este orden (la última que lee prevalece):
+        Sistema (--system) → 2. Global (--global) → 3. Local (--local)
+
+------------------------------------------------------------------------------------------------------------------------------------
+Configuración básica
+------------------------------------------------------------------------------------------------------------------------------------
+* Configuración del nombre de usuario:
+        bash-3.2$ git config --global user.name "kmarzana"
+
+* Configuración del mail de usuario:
+        bash-3.2$ git config --global user.email "kmarzana@birt.eus"
+
+* Configuración del editor por defecto:
+        bash-3.2$ git config --global core.editor "code --wait"
+
+* Configuración CRLF
+        bash-3.2$ git config --global core.autocrlf true (Windows)
+        bash-3.2$ git config --global core.autocrlf input (Mac)
+
+* Mostrar la configuración de Git:
+        bash-3.2$ git config --list
+        **
+        credential.helper=osxkeychain
+        init.defaultbranch=main
+        user.name=kmarzana
+        user.email=kmarzana@birt.eus
+        core.editor=code --wait
+        core.autocrlf=input
+
+------------------------------------------------------------------------------------------------------------------------------------
+Primeros Pasos con un Repositorio Local
+------------------------------------------------------------------------------------------------------------------------------------
+* Nos posicionamos en la carpeta en la que iniciaremos el repositorio Git:
+        bash-3.2$ git init
+        **
+        Initialized empty Git repository in /Users/kmarzana/Documents/GIT/DWES01/.git/
+
+* La carpeta oculta /.git guardará el historial de versiones del repositorio Git:
+        bash-3.2$ ls -la
+        **
+        drwxr-xr-x  4 kmarzana  staff   128 19 sep 00:14 .
+        drwxr-xr-x@ 5 kmarzana  staff   160 18 sep 23:54 ..
+        drwxr-xr-x@ 9 kmarzana  staff   288 19 sep 00:14 .git
+        -rw-r--r--  1 kmarzana  staff  1317 19 sep 00:09 GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt
+
+* En cualquier momento podemos revisar el estado del repositorio Git:
+        bash-3.2$ git status
+        **
+        On branch main
+
+        No commits yet
+
+        Untracked files:
+        (use "git add <file>..." to include in what will be committed)
+        "GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt"
+
+        nothing added to commit but untracked files present (use "git add" to track)
+
+* Añadir los archivos al Stagin Area:
+        bash-3.2$ git add . (todos los archivos)
+        bash-3.2$ git status
+        ** 
+        On branch main
+
+        No commits yet
+
+        Changes to be committed:
+        (use "git rm --cached <file>..." to unstage)
+        new file:   "GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt"
+
+* Añadir el primer commit:
+        bash-3.2$ git commit -m "Commit inicial"
+        **
+        [main (root-commit) ff54b75] Commit inicial
+        1 file changed, 72 insertions(+)
+        create mode 100644 "GIT - Configuracion y Primeros Pasos con un Repositorio Local.txt"
