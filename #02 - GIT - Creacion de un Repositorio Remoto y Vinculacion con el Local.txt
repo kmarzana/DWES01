@@ -1,0 +1,23 @@
+* Creamos un repositorio remoto en GitHub y copiamos su ruta hhtps:
+        https://github.com/kmarzana/DWES01.git
+
+* Vinculamos el repositorio local con el repositorio remoto:
+        bash-3.2$ git remote add origin https://github.com/kmarzana/DWES01.git
+
+            - origin: alias del repositorio remoto principal https al que está conectado el repositorio local
+
+* Añadimos los commits del repositorio local de la rama main (por defecto) a la rama main remota (-u)
+        bash-3.2$ git push -u origin main
+        **
+        Enumerating objects: 4, done.
+        Counting objects: 100% (4/4), done.
+        Delta compression using up to 8 threads
+        Compressing objects: 100% (4/4), done.
+        Writing objects: 100% (4/4), 3.88 KiB | 3.88 MiB/s, done.
+        Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+        To https://github.com/kmarzana/DWES01.git
+        * [new branch]      main -> main
+        branch 'main' set up to track 'origin/main'.
+
+* Tras el comando anterior, si seguimos trabajando en las mismas ramas bastará para añadir los commits:
+        bash-3.2$ git push
